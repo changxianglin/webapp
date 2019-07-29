@@ -1,0 +1,22 @@
+{
+  "name": "webapp",
+  "version": "1.0.0",
+  "description": "write a webapp project use react + redux",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/changxianglin/webapp.git"
+  },
+  "author": "xianglin <281532612@qq.com> (zhourong.clube)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/changxianglin/webapp/issues"
+  },
+  "homepage": "https://github.com/changxianglin/webapp#readme",
+  "dependencies": {
+    "webpack": "4.3.0"
+  }
+}
