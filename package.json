@@ -4,7 +4,8 @@
   "description": "write a webapp project use react + redux",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "./node_modules/.bin/webpack --config webpack.config.dev.js"
   },
   "repository": {
     "type": "git",
@@ -17,6 +18,7 @@
   },
   "homepage": "https://github.com/changxianglin/webapp#readme",
   "dependencies": {
-    "webpack": "4.3.0"
+    "webpack": "4.3.0",
+    "webpack-cli": "2.0.12"
   }
 }
