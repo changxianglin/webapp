@@ -38,7 +38,7 @@ module.exports = {
       { test: /\.(png|jpg|jpeg)$/, use: 'url-loader?limit=8192', include: srcRoot}
     ]
   },
-  plugin: [
+  plugins: [
     new HtmlWebpackPlugin()
   ]
 }

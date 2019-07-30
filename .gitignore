@@ -4,14 +4,5 @@
 # production
 /build
 
-# misc 
-.DS_Store
-
-# dependencies
-/node_modules
-
-# production
-/build
-
 # misc
 .DS_Store

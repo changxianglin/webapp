@@ -1,11 +1,13 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
+import React from 'react';
+import ReactDom from 'react-dom';
 
-import { Provider } from 'react-redux'
+import { Provider } from 'react-redux';
 
 import Main from './Main/Main.jsx'
 
-ReactDOM.render(
+import store from './store'
+
+ReactDom.render(
   <Provider store = {store}><Main /></Provider>,
   document.getElementById('root')
 )
