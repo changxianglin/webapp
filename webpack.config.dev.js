@@ -1,7 +1,7 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const fs = require('fs')
-const srcRoot = path.resolve(__dirname, './src')
+const srcRoot = path.resolve(__dirname, 'src')
 const devPath = path.resolve(__dirname, 'dev')
 const pageDir = path.resolve(__dirname, 'page')
 const mainFile = 'index.js'
