@@ -1,8 +1,8 @@
-import { combineReducer } from 'redux'
+import { combineReducers } from 'redux'
 
 import tabReducer from './tabReducer'
 
-const reducers = combineReducer({
+const reducers = combineReducers({
   tabReducer
 })
 
