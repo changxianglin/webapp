@@ -47,6 +47,9 @@ module.exports = {
     contentBase: devPath
   },
   entry: entryMap,
+  resolve: {
+    extensions: ['.js', '.jsx']
+  },
   output: {
     path: devPath,
     filename: '[name].min.js'
