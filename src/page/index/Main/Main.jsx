@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import { addTodo } from '../actions/tabAction'
-
 import BottomBar from '../BottomBar/BottomBar.jsx'
 
 class Main extends Component {
@@ -20,8 +18,4 @@ class Main extends Component {
   }
 }
 
-export default connect(
-  state => ({
-    
-  })
-)(Main)
+export default connect()(Main)
