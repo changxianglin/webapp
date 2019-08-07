@@ -9,15 +9,11 @@ class Category extends Component {
   constructor(props) {
     super(props)
     this.fetchData()
+    this.fetchData()
   }
 
   fetchData() {
-    axios({
-      method: 'get',
-      url: 'json/header.json'
-    }).then(resp => {
-      this.props.dispatch(getHeaderData(resp.data))
-    })
+    this.props.dispatch(getHeaderData())
   }
 
   renderItems() {
