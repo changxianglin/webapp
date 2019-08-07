@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import axios from 'axios'
 import { getHeaderData } from '../../actions/categoryActions.js'
 
 import './Category.scss'
@@ -8,7 +7,6 @@ import './Category.scss'
 class Category extends Component {
   constructor(props) {
     super(props)
-    this.fetchData()
     this.fetchData()
   }
 
@@ -18,15 +16,21 @@ class Category extends Component {
 
   renderItems() {
     let items = this.props.items
-    
+    items = items.splice(0, 8)
+
     return items.map((item, index) => {
-      return <div key = {index}>{item.name}</div>
+      return (
+          <div key = {index} className = 'category-item'>
+            <img className = 'item-icon' src = {item.url} />
+            <p className = 'item-name'>{item.name}</p>
+          </div>
+      )
     })
   }
 
   render() {
     return (
-      <div className = 'category-content'>
+      <div className = 'category-content clearfix'>
         {this.renderItems()}
       </div>
     )
