@@ -5,7 +5,7 @@ const initState = {
 }
 
 const getListData = (state, action) => {
-  return {...state, list: action.obj.data.primary_filter}
+  return {...state, list: action.obj.data.poilist}
 }
 
 const contentListReducer = (state = initState, action) => {

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 // import { getListData } from '../../actions/contentListAction'
 
-import './ContentList.scss'
+import './ListItem.scss'
 
 class ListItem extends Component {
   constructor(props) {
@@ -11,12 +11,12 @@ class ListItem extends Component {
 
   render() {
     return (
-      <div className = 'item-content'>
+      <div className = 'item-content scale-1px'>
         <img className = 'item-img' />
         <div className = 'brand'>品牌</div>
         <div className = 'item-info-content'>
           <p className = 'item-title'>商品名称</p>
-          <div className = 'item-desc'>
+          <div className = 'item-desc clearfix'>
             <div className = 'item-score'>XX</div>
             <div className = 'item-count'>XX</div>
             <div className = 'item-distance'>XX</div>

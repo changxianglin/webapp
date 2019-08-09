@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getListData } from '../../actions/contentListAction'
 
-import ListItem from './ListItem/ListItem'
+import ListItem from './ListItem/ListItem.jsx'
 
 import './ContentList.scss'
 
@@ -18,9 +18,9 @@ class ContentList extends Component {
 
   renderItems() {
     let list = this.props.list
-    list.map((item, index) => {
-      return <ListItem key = {index} itemData = {item}></ListItem>
-    })
+    return  list.map((item, index) => {
+        return <ListItem key = {index} itemData = {item}></ListItem>
+      })
   }
 
   render() {
