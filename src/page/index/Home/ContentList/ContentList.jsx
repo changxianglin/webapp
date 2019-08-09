@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getListData } from '../../actions/contentListAction'
 
+import ListItem from './ListItem/ListItem'
+
 import './ContentList.scss'
 
 class ContentList extends Component {
@@ -15,7 +17,10 @@ class ContentList extends Component {
   }
 
   renderItems() {
-
+    let list = this.props.list
+    list.map((item, index) => {
+      return <ListItem key = {index} itemData = {item}></ListItem>
+    })
   }
 
   render() {
@@ -26,6 +31,7 @@ class ContentList extends Component {
           <span>附近商家</span>
           <span className = 'title-line'></span>
         </h4>
+        {this.renderItems()}
       </div>
     )
   }
