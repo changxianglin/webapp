@@ -24,7 +24,12 @@
     font-size: 12px;
     padding: 2px;
     color: #ffffff;
+  }
+  .brand-pin {
     background-color: #ffa627;
+  }
+  .brand-xin {
+    background-color: #21c56c;
   }
   .item-title {
     margin-top: 3px;
@@ -35,6 +40,21 @@
   .item-desc {
     margin-top: 13px;
     font-size: 12px;
+  }
+  .star {
+    width: 10px;
+    height: 10px;
+    float: left;
+    background-size: cover;
+  }
+  .fullstar {
+    background-image: url(./img/fullstar.png);
+  }
+  .halfstar {
+    background-image: url(./img/halfstar.png);
+  }
+  .nullstar {
+    background-image: url(./img/gray-star.png);
   }
   .item-score {
     float: left;
