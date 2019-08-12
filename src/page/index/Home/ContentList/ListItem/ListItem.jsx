@@ -50,6 +50,36 @@ class ListItem extends Component {
 
     return starjsx
   }
+
+  renderMonthNum(data) {
+    let num = data.moth_sale_num
+
+    if(num > 999) {
+      return '999+'
+    }
+
+    return num
+  }
+
+  renderMeituanFlag(data) {
+    if(data.delivery_type) {
+      return <div className = 'item-meituan-flag'>美团专送</div>
+    }
+
+    return null 
+  }
+
+  renderOthers(data) {
+    let array = data.discounts2
+    return array.map((item, index) => {
+      return (
+        <div className = 'other-info' key = {index}>
+          <img src = {item.icon_url} className = 'other-tag' />
+          <div className = 'other-content'>{item.info}</div>
+        </div>
+      )
+    })
+  }
  
   render() {
     let data = this.props.itemData
@@ -61,18 +91,16 @@ class ListItem extends Component {
           <p className = 'item-title'>{data.name}</p>
           <div className = 'item-desc clearfix'>
             <div className = 'item-score'>{this.renderScore(data)}</div>
-            <div className = 'item-count'>XX</div>
-            <div className = 'item-distance'>XX</div>
-            <div className = 'item-time'>XX</div>
+            <div className = 'item-count'>月售{this.renderMonthNum(data)}</div>
+            <div className = 'item-distance'>&nbsp;{data.distance}</div>
+            <div className = 'item-time'>{data.mt_delivery_time}&nbsp;|</div>
           </div>
           <div className = 'item-price'>
-            <div className = 'item-pre-price'>XX</div>
+            <div className = 'item-pre-price'>{data.min_price_tip}</div>
+            {this.renderMeituanFlag(data)}
           </div>
           <div className = 'item-others'>
-            <div className = 'other-info'>
-              <img src = '' className = 'other-tag' />
-            </div>
-            <div className = 'other-content'></div>
+            {this.renderOthers(data)}
           </div>
         </div>
       </div>

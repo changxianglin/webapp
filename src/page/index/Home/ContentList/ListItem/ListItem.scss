@@ -74,6 +74,30 @@
     font-size: 12px;
     height: 24px; 
   }
+  .item-meituan-flag {
+    float: right;
+    background-color: #ffd161;
+    color: #000000;
+    padding: 3px;
+    border-radius: 3px;
+  }
+  .other-info {
+    color: #898989;
+    margin-top: 7px;
+    font-size: 12px;
+  }
+  .other-content {
+    display: inline-block;
+    vertical-align: 3px;
+    margin-left: 3px;
+    height: 14px;
+    width: 230px;
+  }
+  .other-tag {
+    width: 14px;
+    height: 14px;
+    display: inline-block;
+  }
   .item-pre-price {
     float: left;
   }
