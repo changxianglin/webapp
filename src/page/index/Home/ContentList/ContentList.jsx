@@ -9,7 +9,15 @@ import './ContentList.scss'
 class ContentList extends Component {
   constructor(props) {
     super(props)
-    this.fetchData()
+
+    this.page = 0
+
+    this.fetchData(this.page)
+
+    this.state = {
+      isend: false
+    }
+
   }
 
   onLoadPage() {
@@ -20,7 +28,17 @@ class ContentList extends Component {
       let proLoadDis = 30
 
       if((scrollTop + clientHeight) >= (scrollHeight - proLoadDis)) {
-        console.log(123)
+   
+        this.page++
+        // 最多滚动三页
+        if(this.page > 3) {
+          this.setState({
+            isend: true
+          })
+        } else {
+          this.fetchData(this.page)
+        }
+
     }
 }
 
@@ -32,8 +50,8 @@ class ContentList extends Component {
     window.removeEventListener('scroll', this.onLoadPage.bind(this))
   }
 
-  fetchData() {
-    this.props.dispatch(getListData())
+  fetchData(page) {
+    this.props.dispatch(getListData(page))
   }
 
   renderItems() {
@@ -52,6 +70,7 @@ class ContentList extends Component {
           <span className = 'title-line'></span>
         </h4>
         {this.renderItems()}
+        <div className = 'loading'></div>
       </div>
     )
   }
