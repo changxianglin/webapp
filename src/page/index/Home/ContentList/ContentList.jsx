@@ -4,6 +4,8 @@ import { getListData } from '../../actions/contentListAction'
 
 import ListItem from './ListItem/ListItem.jsx'
 
+import Loading from 'component/Loading/Loading.jsx'
+
 import './ContentList.scss'
 
 class ContentList extends Component {
@@ -70,7 +72,8 @@ class ContentList extends Component {
           <span className = 'title-line'></span>
         </h4>
         {this.renderItems()}
-        <div className = 'loading'></div>
+
+        <Loading isend = {this.state.isend} />
       </div>
     )
   }
