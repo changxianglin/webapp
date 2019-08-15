@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import './Order.scss'
 
 import { getOrderData } from '../actions/orderActions'
+import ListItem from './ListItem/ListItem'
 
 class Order extends Component {
   constructor(props) {
@@ -21,7 +22,7 @@ class Order extends Component {
     let list = this.props.list
 
     return list.map((item, index) => {
-        return <div key = {index}>{item.name}</div>
+        return <ListItem itemData = {item} key = {index} />
     })
   }
 
