@@ -31,11 +31,13 @@ export default class ListItem extends Component {
     let evaluation = !data.is_comment
     if(evaluation) {
         return (
-          <div className = 'evalution'>
-            <div className = 'evalution-btn'></div>
+          <div className = 'evalution clearfix'>
+            <div className = 'evalution-btn'>评价</div>
           </div>
         )
     }
+    
+    return null
   }
 
   render() {
@@ -55,7 +57,7 @@ export default class ListItem extends Component {
             </div>
           </div>
         </div>
-        {this.renderComment()}
+        {this.renderComment(data)}
       </div>
     )
   }

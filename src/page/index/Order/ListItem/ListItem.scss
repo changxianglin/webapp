@@ -62,4 +62,19 @@
     margin-left: px2rem(2px);
     letter-spacing: 1px;
   }
+  .evalution {
+    padding-top: px2rem(10px);
+    padding-bottom: px2rem(10px);
+  }
+  .evalution-btn {
+    float: right;
+    width: 100px;
+    height: 32px;
+    color: #6b450a;
+    background-color: #ffd161;
+    font-size: 14px;
+    line-height: 32px;
+    text-align: center;
+    margin-right: 10px;
+  }
 }
