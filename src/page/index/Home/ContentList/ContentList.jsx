@@ -3,8 +3,7 @@ import { connect } from 'react-redux'
 import { getListData } from '../../actions/contentListAction'
 
 import ListItem from './ListItem/ListItem.jsx'
-
-import Loading from 'component/Loading/Loading.jsx'
+import ScrollView from 'component/ScrollView/ScrollView.jsx'
 
 import './ContentList.scss'
 
@@ -23,34 +22,26 @@ class ContentList extends Component {
   }
 
   onLoadPage() {
-      let clientHeight = document.documentElement.clientHeight
-      let scrollHeight = document.body.scrollHeight
-      let scrollTop = document.documentElement.scrollTop
+    let clientHeight = document.documentElement.clientHeight
+    let scrollHeight = document.body.scrollHeight
+    let scrollTop = document.documentElement.scrollTop
 
-      let proLoadDis = 30
+    let proLoadDis = 30
 
-      if((scrollTop + clientHeight) >= (scrollHeight - proLoadDis)) {
-   
-        this.page++
-        // 最多滚动三页
-        if(this.page > 3) {
-          this.setState({
-            isend: true
-          })
-        } else {
-          this.fetchData(this.page)
-        }
+    if((scrollTop + clientHeight) >= (scrollHeight - proLoadDis)) {
+ 
+      this.page++
+      // 最多滚动三页
+      if(this.page > 3) {
+        this.setState({
+          isend: true
+        })
+      } else {
+        this.fetchData(this.page)
+      }
 
-    }
-}
-
-  UNSAFE_componentWillMount() {
-    window.addEventListener('scroll', this.onLoadPage.bind(this))
   }
-
-  componentWillUnmount() {
-    window.removeEventListener('scroll', this.onLoadPage.bind(this))
-  }
+  } 
 
   fetchData(page) {
     this.props.dispatch(getListData(page))
@@ -71,9 +62,9 @@ class ContentList extends Component {
           <span>附近商家</span>
           <span className = 'title-line'></span>
         </h4>
-        {this.renderItems()}
-
-        <Loading isend = {this.state.isend} />
+        <ScrollView loadCallback = {this.onLoadPage.bind(this)} isend = {this.state.isend}>
+          {this.renderItems()}
+        </ScrollView>
       </div>
     )
   }
