@@ -27,7 +27,7 @@ export default class My extends Component {
             </li>
           </ul>
           <p className = 'tel'>客服电话:&nbsp;101-101-101</p>
-          <p className = 'tel'>服务时间:&nbsp;9:00-23:00</p>
+          <p className = 'time'>服务时间:&nbsp;9:00-23:00</p>
         </div>
       </div>
     )

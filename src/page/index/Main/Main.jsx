@@ -17,7 +17,7 @@ class Main extends Component {
       <div>
         {/* <Home /> */}
         {/* <Order /> */}
-        <My />>
+        <My />
         <BottomBar />
       </div>
     )
