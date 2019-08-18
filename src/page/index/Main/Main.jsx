@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import BottomBar from '../BottomBar/BottomBar.jsx'
-// import Home from '../Home/Home'
-// import Order from '../Order/Order'
+import Home from '../Home/Home'
+import Order from '../Order/Order'
 import My from '../My/My'
 
 class Main extends Component {
@@ -15,8 +15,8 @@ class Main extends Component {
   render() {
     return (
       <div>
-        {/* <Home /> */}
-        {/* <Order /> */}
+        <Home />
+        <Order />
         <My />
         <BottomBar />
       </div>
