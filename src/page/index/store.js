@@ -3,7 +3,8 @@ import thunk from 'redux-thunk'
 
 import mainReducer from './reducers/main.js'
 
-import createHistory from 'history/createHashHistory'
+// import createHistory from 'history/createHashHistory'
+import { createHashHistory as createHistory } from 'history'
 import { routerMiddleware } from 'react-router-redux'
 
 const history = createHistory()
