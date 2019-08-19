@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Route, withRouter } from 'react-router-dom'
 
 import BottomBar from '../BottomBar/BottomBar.jsx'
 import Home from '../Home/Home'
@@ -15,13 +16,13 @@ class Main extends Component {
   render() {
     return (
       <div>
-        <Home />
-        <Order />
-        <My />
+        <Route path = '/home' exact component = {Home} />
+        <Route path = '/order' component = {Order}/>
+        <Route path = '/my' component = {My} />
         <BottomBar />
       </div>
     )
   }
 }
 
-export default connect()(Main)
+export default withRouter(connect()(Main))

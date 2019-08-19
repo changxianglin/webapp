@@ -3,12 +3,12 @@ import './ListItem.scss'
 
 export default class ListItem extends Component {
 
-  renderTotalPrice(item, data) {
+  renderTotalPrice(data, index) {
     return (
-      <div className = 'product-item'>
+      <div key = {index} className = 'product-item'>
         <span>...</span>
         <div className = 'p-total-count'>
-          总计{item.product_count}个菜,实付
+          总计{data.product_count}个菜,实付
           <span className = 'total-price'>￥{data.total}</span>
         </div>
       </div>

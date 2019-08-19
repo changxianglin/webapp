@@ -8,9 +8,13 @@ import { createHashHistory as createHistory } from 'history'
 import { routerMiddleware } from 'react-router-redux'
 
 const history = createHistory()
+
+// install tab
+history.replace('home')
+
 const historyMiddl = routerMiddleware(history)
 
-const store = createStore(mainReducer, applyMiddleware([thunk, historyMiddl]))
+const store = createStore(mainReducer, applyMiddleware(thunk, historyMiddl))
 
 if(module.hot) {
   module.hot.accept('./reducers/main', () => {
