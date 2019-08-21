@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import NavHeader from 'component/NavHeader/NavHeader'
+import Header from '../Header/Header'
 
 class Main extends Component {
   constructor(props) {
@@ -13,6 +14,7 @@ class Main extends Component {
     return (
       <div className = 'category'>
         <NavHeader title = '分类' />
+        <Header />
       </div>
     )
   }
