@@ -1,4 +1,6 @@
+import { CHANGE_TAB } from '../actions/actionTypes'
 import { TABKEY } from '../config'
+
 let tabs = {}
 tabs[TABKEY.cate] = {
   key: TABKEY.cate,
@@ -23,8 +25,14 @@ const initState = {
   activeKey: TABKEY.cate,
 }
 
+const changeTab = (state, action) => {
+  return {...state, activeKey: action.obj.activeKey}
+}
+
 const headerReducer = (state = initState, action) => {
   switch(action.type) {
+    case CHANGE_TAB:
+      return changeTab(state, action)
     default:
       return state
   }

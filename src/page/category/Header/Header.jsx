@@ -3,11 +3,16 @@ import { connect } from 'react-redux'
 
 import './Header.scss'
 
+import { changeTab } from '../actions/headerAction'
+
 class Header extends Component {
 
-  changeTab() {
-
+  changeTab(key) {
+    this.props.dispatch(changeTab({
+      activeKey: key
+    }))
   }
+
   renderTabs() {
     let tabs = this.props.tabs
     let array = []
