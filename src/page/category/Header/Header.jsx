@@ -47,6 +47,34 @@ class Header extends Component {
     return array 
   }
 
+  renderCateInnerContent(items, cateList) {
+    return items.sub_category_list.map((item, index) => {
+      let cls = item.active ? 'cate-box-inner active': 'cate-box-inner'
+      return (
+        <div className = 'cate-box'>
+          <div className = {cls}>
+            {item.name}({item.quantity})
+          </div>
+        </div>
+      )
+    })
+  }
+
+  renderCateContent() {
+    let cateList = this.props.filterData.category_filter_list || []
+
+    return cateList.map((item, index) => {
+        return (
+          <li key = {index} className = 'cate-item'>
+            <p className = 'item-title'>{item.name}<span className = 'item-count'>{item.quantity}</span></p>
+            <div className = 'item-content'>
+              {this.renderCateInnerContent(item, catelist)}
+            </div>
+          </li>
+        )
+    })
+  }
+
   renderContent() {
     let tabs = this.props.tabs
     let array = []
@@ -60,10 +88,24 @@ class Header extends Component {
       if(item.key === TABKEY.cate) {
         array.push(
         <ul key = {item.key} className = {cls}>
-          {this.renderContent()}
+          {this.renderCateContent()}
+        </ul>
+        )
+      } else if(item.key === TABKEY.type) {
+        array.push(
+        <ul key = {item.key} className = {cls}>
+          {this.renderTypeContent()}
+        </ul>
+        )
+      } else if(item.key === TABKEY.filter) {
+        array.push(
+        <ul key = {item.key} className = {cls}>
+          {this.renderFilterContent()}
         </ul>
         )
       }
+
+      return array
     }
   }
 
@@ -87,5 +129,6 @@ export default connect(
   state => ({
     tabs: state.headerReducer.tabs,
     activeKey: state.headerReducer.activeKey,
+    filterData: state.headerReducer.filterData,
   })
 )(Header)
