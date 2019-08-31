@@ -47,11 +47,25 @@ class Header extends Component {
     return array 
   }
 
-  renderCateInnerContent(items, cateList) {
+  renderTypeContent() {
+    let typeList = this.props.fetchData.sort_type_list || []
+    console.log(typeList)
+    return typeList.map((item, index) => {
+      let cls = item.active ? 'type-item active' : 'type-item'
+
+      return (
+        <li className = {cls} key = {index}>
+          {item.name}
+        </li>
+      )
+    })
+  }
+
+  renderCateInnerContent(items, /*cateList*/) {
     return items.sub_category_list.map((item, index) => {
       let cls = item.active ? 'cate-box-inner active': 'cate-box-inner'
       return (
-        <div className = 'cate-box'>
+        <div className = 'cate-box' key = {index}>
           <div className = {cls}>
             {item.name}({item.quantity})
           </div>
@@ -68,7 +82,7 @@ class Header extends Component {
           <li key = {index} className = 'cate-item'>
             <p className = 'item-title'>{item.name}<span className = 'item-count'>{item.quantity}</span></p>
             <div className = 'item-content'>
-              {this.renderCateInnerContent(item, catelist)}
+              {this.renderCateInnerContent(item, /*catelist*/)}
             </div>
           </li>
         )
@@ -100,7 +114,7 @@ class Header extends Component {
       } else if(item.key === TABKEY.filter) {
         array.push(
         <ul key = {item.key} className = {cls}>
-          {this.renderFilterContent()}
+          {/* {this.renderFilterContent()} */}
         </ul>
         )
       }
