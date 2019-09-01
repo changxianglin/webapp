@@ -18,8 +18,13 @@ class Header extends Component {
   }
 
   changeTab(key) {
+    let closePanel = false
+    if(this.props.activeKey == key && !this.props.closePanel) {
+      closePanel = true
+    }
     this.props.dispatch(changeTab({
-      activeKey: key
+      activeKey: key,
+      closePanel: closePanel,
     }))
   }
 
@@ -29,7 +34,7 @@ class Header extends Component {
     for (let key in tabs) {
       let item = tabs[key]
       let cls = item.key + ' item'
-      if(item.key === this.props.activeKey) {
+      if(item.key === this.props.activeKey && !this.props.closePanel) {
         cls += ' current'
       }
 
@@ -47,10 +52,33 @@ class Header extends Component {
     return array 
   }
 
+  renderFilterInnerContent(items, /* filterList */) {
+    return items.map((item, index) => {
+      let cls = item.icon ? 'cate-box-inner has-icon' : 'cate-box-inner'
+      if(item.active) {
+        cls += 'active'
+      }
+      return(
+        <div className = 'cate-box' key = {index}>
+          <div className = {cls}>
+            {item.icon ? <img src = {item.icon} /> : null }{item.name}
+          </div>
+        </div>
+      )
+    })
+  }
+
   renderFilterContent() {
     let filterList = this.props.filterData.activity_filter_list || []
     return filterList.map((item, index) => {
-      
+      return (
+        <li key = {index} className = 'filter-item'>
+            <p className = 'filter-title'>{item.group_title}</p>
+            <div className = 'item-content clearfix'>
+              {this.renderFilterInnerContent(item.items, filterList)}
+            </div>
+        </li>
+      )
     })
   }
 
@@ -87,7 +115,7 @@ class Header extends Component {
         return (
           <li key = {index} className = 'cate-item'>
             <p className = 'item-title'>{item.name}<span className = 'item-count'>{item.quantity}</span></p>
-            <div className = 'item-content'>
+            <div className = 'item-content clearfix'>
               {this.renderCateInnerContent(item, /*catelist*/)}
             </div>
           </li>
@@ -98,10 +126,9 @@ class Header extends Component {
   renderContent() {
     let tabs = this.props.tabs
     let array = []
-    for(let key in tabs) {
+    for (let key in tabs) {
       let item = tabs[key]
-      console.log(item.key)
-      let cls = item.key + ' -panel'
+      let cls = item.key + '-panel'
       if(item.key === this.props.activeKey) {
         cls += ' current'
       }
@@ -125,12 +152,18 @@ class Header extends Component {
         </ul>
         )
       }
-
-      return array
     }
+
+    return array
   }
 
   render() {
+    let cls = 'panel'
+    if(!this.props.closePanel) {
+      cls += ' show'
+    } else {
+      cls = 'panel'
+    }
     return (
       <div className = 'header'>
         <div className = 'header-top'>
@@ -151,5 +184,6 @@ export default connect(
     tabs: state.headerReducer.tabs,
     activeKey: state.headerReducer.activeKey,
     filterData: state.headerReducer.filterData,
+    closePanel: state.headerReducer.closePanel
   })
 )(Header)
