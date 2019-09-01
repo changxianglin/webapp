@@ -47,9 +47,15 @@ class Header extends Component {
     return array 
   }
 
+  renderFilterContent() {
+    let filterList = this.props.filterData.activity_filter_list || []
+    return filterList.map((item, index) => {
+      
+    })
+  }
+
   renderTypeContent() {
-    let typeList = this.props.fetchData.sort_type_list || []
-    console.log(typeList)
+    let typeList = this.props.filterData.sort_type_list || []
     return typeList.map((item, index) => {
       let cls = item.active ? 'type-item active' : 'type-item'
 
@@ -94,6 +100,7 @@ class Header extends Component {
     let array = []
     for(let key in tabs) {
       let item = tabs[key]
+      console.log(item.key)
       let cls = item.key + ' -panel'
       if(item.key === this.props.activeKey) {
         cls += ' current'
@@ -114,7 +121,7 @@ class Header extends Component {
       } else if(item.key === TABKEY.filter) {
         array.push(
         <ul key = {item.key} className = {cls}>
-          {/* {this.renderFilterContent()} */}
+          {this.renderFilterContent()}
         </ul>
         )
       }
