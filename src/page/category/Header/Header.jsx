@@ -164,12 +164,13 @@ class Header extends Component {
     } else {
       cls = 'panel'
     }
+
     return (
       <div className = 'header'>
         <div className = 'header-top'>
           {this.renderTabs()}
         </div>
-        <div className = 'panel'>
+        <div className = {cls}>
           <div className = 'panel-inner'>
             {this.renderContent()}
           </div>
