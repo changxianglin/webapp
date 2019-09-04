@@ -1,6 +1,5 @@
 import { CHANGE_TAB, GET_FILTER_DATA, CHANGE_FILTER } from '../actions/actionTypes'
 import { TABKEY } from '../config'
-import { changeFilter } from '../actions/headerAction';
 
 let tabs = {}
 tabs[TABKEY.cate] = {
@@ -36,8 +35,14 @@ const getFilterData = (state, action) => {
   return {...state, filterData: action.obj.data}
 }
 
-const changeFilter = () => {
-  
+const changeFilter = (state, action) => {
+  let _tabs = JSON.parse(JSON.stringify(state.tabs))
+  _tabs[action.obj.key] = {
+    key: action.obj.key,
+    text: action.obj.item.name,
+    obj: action.obj.item,
+  }
+  return {...state, tabs: _tabs}
 }
 
 const headerReducer = (state = initState, action) => {

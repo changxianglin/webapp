@@ -17,7 +17,30 @@ class Header extends Component {
     this.props.dispatch(getFilterData())
   }
 
-  changeDoFilter(item, key) {
+  revertActive(key, dataList) {
+    console.log(dataList)
+    if(key === TABKEY.cate) {
+      for(let i = 0; i < dataList.length; i++) {
+        for(let j = 0; j < dataList[i].sub_category_list.length; j++) {
+          dataList[i].category_filter_list.active = false
+        }
+      }
+    } else if(key === TABKEY.type) {
+      for(let x = 0; x < dataList.length; x++) {
+        dataList[x].active = false
+      } 
+    } else {
+      for(let k = 0; k < dataList.length; k++) {
+        for(let o = 0; o < dataList[k].items.length; o++) {
+          dataList[k].items[o].active = false
+        }
+      } 
+    }
+  }
+
+  changeDoFilter(item, key, dataList) {
+    this.revertActive(key, dataList)
+    item.active = true
     this.props.dispatch(changeFilter({
       item, 
       key
@@ -59,14 +82,14 @@ class Header extends Component {
     return array 
   }
 
-  renderFilterInnerContent(items, /* filterList */) {
+  renderFilterInnerContent(items, filterList) {
     return items.map((item, index) => {
       let cls = item.icon ? 'cate-box-inner has-icon' : 'cate-box-inner'
       if(item.active) {
         cls += 'active'
       }
       return(
-        <div className = 'cate-box' key = {index} onClick = {() => this.changeDoFilter(item, TABKEY.filter)}>
+        <div className = 'cate-box' key = {index} onClick = {() => this.changeDoFilter(item, TABKEY.filter, filterList)}>
           <div className = {cls}>
             {item.icon ? <img src = {item.icon} /> : null }{item.name}
           </div>
@@ -95,18 +118,18 @@ class Header extends Component {
       let cls = item.active ? 'type-item active' : 'type-item'
 
       return (
-        <li className = {cls} key = {index} onClick = {() => this.changeDoFilter(item, TABKEY.type)}>
+        <li className = {cls} key = {index} onClick = {() => this.changeDoFilter(item, TABKEY.type, typeList)}>
           {item.name}
         </li>
       )
     })
   }
 
-  renderCateInnerContent(items, /*cateList*/) {
+  renderCateInnerContent(items, cateList) {
     return items.sub_category_list.map((item, index) => {
       let cls = item.active ? 'cate-box-inner active': 'cate-box-inner'
       return (
-        <div className = 'cate-box' key = {index} onClick = {() => this.changeDoFilter(item, TABKEY.cate)}>
+        <div className = 'cate-box' key = {index} onClick = {() => this.changeDoFilter(item, TABKEY.cate, cateList)}>
           <div className = {cls}>
             {item.name}({item.quantity})
           </div>
@@ -123,7 +146,7 @@ class Header extends Component {
           <li key = {index} className = 'cate-item'>
             <p className = 'item-title'>{item.name}<span className = 'item-count'>{item.quantity}</span></p>
             <div className = 'item-content clearfix'>
-              {this.renderCateInnerContent(item, /*catelist*/)}
+              {this.renderCateInnerContent(item, cateList)}
             </div>
           </li>
         )
