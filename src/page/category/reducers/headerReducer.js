@@ -1,5 +1,6 @@
-import { CHANGE_TAB, GET_FILTER_DATA } from '../actions/actionTypes'
+import { CHANGE_TAB, GET_FILTER_DATA, CHANGE_FILTER } from '../actions/actionTypes'
 import { TABKEY } from '../config'
+import { changeFilter } from '../actions/headerAction';
 
 let tabs = {}
 tabs[TABKEY.cate] = {
@@ -35,12 +36,18 @@ const getFilterData = (state, action) => {
   return {...state, filterData: action.obj.data}
 }
 
+const changeFilter = () => {
+  
+}
+
 const headerReducer = (state = initState, action) => {
   switch(action.type) {
     case CHANGE_TAB:
       return changeTab(state, action)
     case GET_FILTER_DATA:
       return getFilterData(state, action)
+    case CHANGE_FILTER:
+      return changeFilter(state, action)
     default:
       return state
   }

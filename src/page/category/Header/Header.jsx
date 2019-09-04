@@ -4,7 +4,7 @@ import { TABKEY } from '../config'
 
 import './Header.scss'
 
-import { changeTab, getFilterData } from '../actions/headerAction'
+import { changeTab, getFilterData, changeFilter } from '../actions/headerAction'
 
 class Header extends Component {
   constructor(props) {
@@ -15,6 +15,13 @@ class Header extends Component {
 
   fetchData() {
     this.props.dispatch(getFilterData())
+  }
+
+  changeDoFilter(item, key) {
+    this.props.dispatch(changeFilter({
+      item, 
+      key
+    }))
   }
 
   changeTab(key) {
@@ -59,7 +66,7 @@ class Header extends Component {
         cls += 'active'
       }
       return(
-        <div className = 'cate-box' key = {index}>
+        <div className = 'cate-box' key = {index} onClick = {() => this.changeDoFilter(item, TABKEY.filter)}>
           <div className = {cls}>
             {item.icon ? <img src = {item.icon} /> : null }{item.name}
           </div>
@@ -88,7 +95,7 @@ class Header extends Component {
       let cls = item.active ? 'type-item active' : 'type-item'
 
       return (
-        <li className = {cls} key = {index}>
+        <li className = {cls} key = {index} onClick = {() => this.changeDoFilter(item, TABKEY.type)}>
           {item.name}
         </li>
       )
@@ -99,7 +106,7 @@ class Header extends Component {
     return items.sub_category_list.map((item, index) => {
       let cls = item.active ? 'cate-box-inner active': 'cate-box-inner'
       return (
-        <div className = 'cate-box' key = {index}>
+        <div className = 'cate-box' key = {index} onClick = {() => this.changeDoFilter(item, TABKEY.cate)}>
           <div className = {cls}>
             {item.name}({item.quantity})
           </div>
