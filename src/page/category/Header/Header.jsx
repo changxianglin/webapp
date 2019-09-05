@@ -18,11 +18,10 @@ class Header extends Component {
   }
 
   revertActive(key, dataList) {
-    console.log(dataList)
     if(key === TABKEY.cate) {
       for(let i = 0; i < dataList.length; i++) {
         for(let j = 0; j < dataList[i].sub_category_list.length; j++) {
-          dataList[i].category_filter_list.active = false
+          dataList[i].sub_category_list.active = false
         }
       }
     } else if(key === TABKEY.type) {
