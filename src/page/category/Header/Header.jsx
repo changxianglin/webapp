@@ -21,7 +21,7 @@ class Header extends Component {
     if(key === TABKEY.cate) {
       for(let i = 0; i < dataList.length; i++) {
         for(let j = 0; j < dataList[i].sub_category_list.length; j++) {
-          dataList[i].sub_category_list.active = false
+          dataList[i].sub_category_list[j].active = false
         }
       }
     } else if(key === TABKEY.type) {
