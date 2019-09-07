@@ -57,11 +57,6 @@ class ContentList extends Component {
   render() {
     return (
       <div className = 'list-content'>
-        <h4 className = 'list-title'>
-          <span className = 'title-line'></span>
-          <span>附近商家</span>
-          <span className = 'title-line'></span>
-        </h4>
         <ScrollView loadCallback = {this.onLoadPage.bind(this)} isend = {this.state.isend}>
           {this.renderItems()}
         </ScrollView>
