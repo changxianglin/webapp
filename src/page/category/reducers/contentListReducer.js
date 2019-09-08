@@ -1,4 +1,4 @@
-import { LIST_DATA } from '../actions/actionTypes'
+import { GET_LIST_DATA } from '../actions/actionTypes'
 
 const initState = {
   list: []
@@ -17,7 +17,7 @@ const getListData = (state, action) => {
 
 const contentListReducer = (state = initState, action) => {
   switch(action.type) {
-    case LIST_DATA:
+    case GET_LIST_DATA:
       return getListData(state, action)
     default:
       return state

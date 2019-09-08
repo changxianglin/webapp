@@ -84,7 +84,7 @@ class ListItem extends Component {
   render() {
     let data = this.props.itemData
     return (
-      <div className = 'item-content scale-1px'>
+      <div className = 'r-item-content scale-1px'>
         <img className = 'item-img' src = {data.pic_url} />
         {this.renderBrand(data)}
         <div className = 'item-info-content'>

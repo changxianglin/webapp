@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { getListData } from '../../actions/contentListAction'
+import { getListData } from '../actions/contentListAction'
 
 import ListItem from 'component/ListItem/ListItem.jsx'
 import ScrollView from 'component/ScrollView/ScrollView.jsx'
