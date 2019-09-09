@@ -11,13 +11,7 @@ class ContentList extends Component {
   constructor(props) {
     super(props)
 
-    this.page = 0
-
-    this.fetchData(this.page)
-
-    this.state = {
-      isend: false
-    }
+    this.fetchData()
 
   }
 
@@ -29,22 +23,17 @@ class ContentList extends Component {
     let proLoadDis = 30
 
     if((scrollTop + clientHeight) >= (scrollHeight - proLoadDis)) {
- 
-      this.page++
+
       // 最多滚动三页
-      if(this.page > 3) {
-        this.setState({
-          isend: true
-        })
-      } else {
-        this.fetchData(this.page)
-      }
+      if(this.props.page <= 3) {
+        this.fetchData()
+      } 
 
   }
   } 
 
-  fetchData(page) {
-    this.props.dispatch(getListData(page))
+  fetchData() {
+    this.props.dispatch(getListData({}))
   }
 
   renderItems() {
@@ -57,7 +46,7 @@ class ContentList extends Component {
   render() {
     return (
       <div className = 'list-content'>
-        <ScrollView loadCallback = {this.onLoadPage.bind(this)} isend = {this.state.isend}>
+        <ScrollView loadCallback = {this.onLoadPage.bind(this)} isend = {this.props.isend}>
           {this.renderItems()}
         </ScrollView>
       </div>
@@ -66,5 +55,7 @@ class ContentList extends Component {
 }
 
 export default connect(state => ({
-  list: state.contentListReducer.list
+  list: state.contentListReducer.list,
+  page: state.contentListReducer.page,
+  isend: state.contentListReducer.isend,
 }))(ContentList)

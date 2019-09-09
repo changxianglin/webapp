@@ -5,6 +5,7 @@ import { TABKEY } from '../config'
 import './Header.scss'
 
 import { changeTab, getFilterData, changeFilter } from '../actions/headerAction'
+import { getListData } from '../actions/contentListAction'
 
 class Header extends Component {
   constructor(props) {
@@ -43,6 +44,11 @@ class Header extends Component {
     this.props.dispatch(changeFilter({
       item, 
       key
+    }))
+
+    this.props.dispatch(getListData({
+      filterData: item, 
+      toFirtPage: true
     }))
   }
 
