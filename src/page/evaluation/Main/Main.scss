@@ -9,13 +9,67 @@ body {
   .eva-content {
     background-color: #fff;
     overflow: hidden;
-    margin: 10px;
-    margin-top: 74px;
+    margin: px2rem(10px);
+    margin-top: px2rem(74px);
   }
   .star-area {
-
+    text-align: center;
+    margin-top: px2rem(30px);
   }
   .star-item {
-    
+    width: px2rem(32px);
+    height: px2rem(32px);
+    background-image: url('./img/gray-star.png');
+    background-size: cover;
+    display: inline-block;
+    margin-right: px2rem(10px);
+    &.light {
+      background-image: url('./img/light-star.png');
+    }
+  }
+  .comment {
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-bottom: 1px solid #e4e4e4;
+    padding-bottom: 13px;
+    position: relative;
+    .count {
+      font-size: 11px;
+      color: #aaaaaa;
+      position: absolute;
+      bottom: 24px;
+      right: 9px;
+    }
+    .comment-input {
+      width: 100%;
+      height: 100px;
+      border: 1px solid #c6c6c6;
+      box-sizing: border-box;
+
+      outline: none;
+      -webkit-appearance: none;
+
+      font-size: 16px;
+      padding: 10px;
+      background-color: #fafafa;
+    }
+  }
+  .product-name {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    text-align: left;
+    font-size: 16px;
+  }
+  .submit {
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    font-size: 16px;
+    background-color: #ffd161;
+    position: fixed;
+    bottom: 0;
+    text-align: center;
   }
 }
