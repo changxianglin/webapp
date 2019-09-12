@@ -10,13 +10,24 @@ class Main extends React.Component {
     super(props)
   }
 
+  renderStar() {
+    let array = []
+
+    for(let i = 0; i < 5; i++) {
+      let cls = 'star-item'
+      array.push(<div key = {i} className = {cls}></div>)
+    }
+
+    return array
+  }
+
   render() {
     return (
       <div className = 'content'>
         <NavHeader title = '评价' />
         <div className = 'eva-content'>
           <div className = 'star-area'>
-
+            {this.renderStar()}
           </div>
           <div className = 'comment'>
             <textarea maxLength = '140' placeholder = '亲,菜品的味道如何，商机网少的发舒服点.' className = 'comment-input'></textarea>
