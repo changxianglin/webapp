@@ -8,6 +8,12 @@ import NavHeader from 'component/NavHeader/NavHeader.jsx'
 class Main extends React.Component {
   constructor(props) {
     super(props)
+
+    this.maxCount = 140
+
+    this.state = {
+      count: this.maxCount,
+    }
   }
 
   renderStar() {
