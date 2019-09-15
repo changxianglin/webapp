@@ -18,11 +18,11 @@ class Main extends React.Component {
   }
 
   componentDidMount() {
-    this.refs.commentInput.addEventListener('compositionstart', () => {
+    this.commentInput.addEventListener('compositionstart', () => {
       this.chineseInputing = true
     })
 
-    this.refs.commentInput.addEventListener('compositionend', (e) => {
+    this.commentInput.addEventListener('compositionend', (e) => {
       this.chineseInputing = false
       this.onInput(e.target.value)
     })
@@ -51,13 +51,18 @@ class Main extends React.Component {
       array.push(<div onClick = {() => this.doEva(i)} key = {i} className = {cls}></div>)
     }
 
-    return array } render() { return ( <div className = 'content'> <NavHeader title = '评价' /> <div className = 'eva-content'><div className = 'star-area'>
+    return array 
+  } 
+
+  render() { 
+    return ( 
+    <div className = 'content'> <NavHeader title = '评价' /> <div className = 'eva-content'><div className = 'star-area'>
             {this.renderStar()}
-          </div>
-          <div className = 'comment'>
-            <textarea ref = "commentInput" onChange = {(e) => this.onInput(e.target.value)} maxLength = '140' placeholder = '亲,菜品的味道如何，商机网少的发舒服点.' className = 'comment-input'></textarea>
-            <span className = 'count'>{this.state.count}</span>
-          </div>
+      </div>
+        <div className = 'comment'>
+          <textarea ref = {(ref) => {this.commentInput = ref}} onChange = {(e) => this.onInput(e.target.value)} maxLength = '140' placeholder = '亲,菜品的味道如何，商机网少的发舒服点.' className = 'comment-input'></textarea>
+          <span className = 'count'>{this.state.count}</span>
+        </div>
           <p className = 'one-line product-name'>+1243哦啊设计的佛啊惊世毒妃</p>
         </div>
         <div className = 'submit'>提交评价</div>
