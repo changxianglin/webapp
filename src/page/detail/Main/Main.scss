@@ -1,0 +1,14 @@
+.detail {
+  .tab-bar {
+    font-size: px2rem(16px);
+    display: flex;
+    border-bottom: 1px solid #f0f0f0;
+    margin-top: px2rem(64px);
+    .tab-item {
+      flex: 1;
+      height: 45px;
+      line-height: 45px;
+      position: relative;
+    }
+  }
+}
