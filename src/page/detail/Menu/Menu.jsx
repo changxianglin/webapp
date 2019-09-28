@@ -38,7 +38,7 @@ class Menu extends Component {
 }
 
 export default connect(
-  state => {
+  state => ({
     listData: state.menuReducer.listData
-  }
+  })
 )(Menu)
