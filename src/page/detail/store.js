@@ -10,7 +10,7 @@ import { routerMiddleware } from 'react-router-redux'
 const history = createHistory()
 
 // install tab
-history.replace('home')
+history.replace('menu')
 
 const historyMiddl = routerMiddleware(history)
 

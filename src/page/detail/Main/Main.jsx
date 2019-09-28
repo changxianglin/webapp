@@ -23,7 +23,7 @@ class Main extends Component {
 
     return tabs.map((item) => {
       return (
-        <NavLink replace = {true} to = {'/' + item.key} key = {item.key} className='active' onClick = {() => this.changeTab} className = 'tab-item'>{item.name}</NavLink>
+        <NavLink replace = {true} to = {'/' + item.key} key = {item.key} className='active' onClick = {() => this.changeTab} className = 'tab-item '>{item.name}</NavLink>
       )
     })
   }
