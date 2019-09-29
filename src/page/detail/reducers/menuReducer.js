@@ -17,7 +17,8 @@ const menuReducer = (state = initState, action) => {
   switch(action.type) {
     case GET_LIST_DATA:
       return getListData(state, action)
-    case 
+    case LEFT_CLICK:
+      return itemClick(state, action)
     default: 
       return state
   }
