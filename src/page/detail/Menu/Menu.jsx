@@ -11,13 +11,17 @@ class Menu extends Component {
     this.props.dispatch(getListData())
   }
 
+  itemClick() {
+    
+  }
+
   renderLeft() {
     let list = this.props.listData.food_spu_tags || []
 
     return list.map((item, index) => {
         let cls = 'left-item'
         return (
-          <div key = {index} className = {cls}>
+          <div onClick = {() => this.itemClick(item, index)} key = {index} className = {cls}>
             <div className = 'item-text'>{item.icon ? <img className = 'item-icon' src = {item.icon} alt = '' /> : null }{item.name}</div>
           </div>
         )

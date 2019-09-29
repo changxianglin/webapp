@@ -1,5 +1,12 @@
-import { GET_LIST_DATA } from './actionTypes'
+import { GET_LIST_DATA, LEFT_CLICK } from './actionTypes'
 import axios from 'axios'
+
+export const itemClick = (obj) => {
+  return {
+    type: LEFT_CLICK,
+    obj: obj
+  }
+}
 
 export const getListData = () => async(dispatch) => {
   let resp = await axios({
