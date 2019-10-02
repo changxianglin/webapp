@@ -39,8 +39,17 @@
     vertical-align: px2rem(-4px);
     margin-right: px2rem(6px);
   }
-  
+  .right-list {
+    height: 100%;
+  }
   .right-list-inner {
     font-size: 16px;
+    padding-top: 85px;
+  }
+  .right-content {
+    flex: 1;
+    margin-left: 10px;
+    height: 100%;
+    overflow: auto;
   }
 }
