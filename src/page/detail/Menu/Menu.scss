@@ -43,13 +43,20 @@
     height: 100%;
   }
   .right-list-inner {
-    font-size: 16px;
-    padding-top: 85px;
+    font-size: px2rem(16px);
+    padding-top: px2rem(85px);
   }
   .right-content {
     flex: 1;
-    margin-left: 10px;
+    margin-left: px2rem(10px);
     height: 100%;
     overflow: auto;
+  }
+  .right-title {
+    font-size: px2rem(13px);
+    color: #333333;
+    margin-top: px2rem(10px);
+    padding-left: px2rem(4px);
+    border-left: 2px solid #ffd161;
   }
 }
