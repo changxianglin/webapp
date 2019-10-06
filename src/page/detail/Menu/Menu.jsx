@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getListData, itemClick } from '../actions/menuAction'
+import MenuItem from './MenuItem/MenuItem'
 
 import './Menu.scss'
 
@@ -34,7 +35,7 @@ class Menu extends Component {
     let _array = array || []
 
     return _array.map((item, index) => {
-      return (<div key = {index}>{item.name}</div>)
+      return (<MenuItem key = {index} data = {item}></MenuItem>)
     })
   }
 
