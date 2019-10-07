@@ -2,6 +2,10 @@ import React, { Component } from 'react'
 import './MenuItem.scss'
 
 class MenuItem extends Component {
+  addSelectItem() {
+
+  }
+  
   render() {
     let item = this.props.data
     return (
@@ -14,7 +18,7 @@ class MenuItem extends Component {
           <p className = 'item-price'>￥{item.min_price}/<span className = 'unit'>{item.unit}</span></p>
         </div>
         <div className = 'select-content'>
-          <div className = 'plus'></div>
+          <div onClick = {() => this.addSelectItem()} className = 'plus'></div>
         </div>
       </div>
     )
