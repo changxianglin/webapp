@@ -14,7 +14,7 @@ history.replace('menu')
 
 const historyMiddl = routerMiddleware(history)
 
-const store = createStore(mainReducer, applyMiddleware(thunk, historyMiddl))
+const store = createStore(mainReducer,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(), applyMiddleware(thunk, historyMiddl))
 
 if(module.hot) {
   module.hot.accept('./reducers/main', () => {

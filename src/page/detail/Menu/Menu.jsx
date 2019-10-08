@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getListData, itemClick } from '../actions/menuAction'
+
 import MenuItem from './MenuItem/MenuItem'
+import ShopBar from './ShopBar/ShopBar'
 
 import './Menu.scss'
 
@@ -70,6 +72,7 @@ class Menu extends Component {
         <div className = 'right-content'>
           {this.renderRight()}
         </div>
+        <ShopBar />
       </div>
     )
   }
