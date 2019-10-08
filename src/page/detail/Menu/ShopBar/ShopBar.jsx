@@ -34,7 +34,7 @@ class ShopBar extends Component {
     const array = data.chooseList || []
     return array.map((item, index) => {
       return (
-        <div key = {index} className='chooseItem'>
+        <div key = {index} className='choose-item'>
           <div className='item-name'>{item.name}</div>
           <div className='item-price'>￥{item.min_price * item.chooseCount}</div>
           <div className='select-content'>
