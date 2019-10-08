@@ -38,6 +38,7 @@ class Main extends Component {
         <Route exact path = '/menu' component = {Menu} />
         <Route path = '/comment' component = {Comment} />
         <Route path = '/restanurant' component = {Restanurant} />
+        {this.props.showChooseContent ? <div className = 'mask'></div> : null}
       </div>
     )
   }
@@ -45,6 +46,7 @@ class Main extends Component {
 
 export default withRouter(connect(
   state => ({
-    tabs: state.tabReducer.tabs
+    tabs: state.tabReducer.tabs,
+    showChooseContent: state.menuReducer.showChooseContent,
   })
 )(Main))

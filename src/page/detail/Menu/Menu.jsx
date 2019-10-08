@@ -24,7 +24,7 @@ class Menu extends Component {
     let list = this.props.listData.food_spu_tags || []
 
     return list.map((item, index) => {
-        let cls = this.props.currentLeftIndex === index ?  'left-item active' : 'left-item'
+        let cls = this.props.currentLeftIndex === index ? 'left-item active' : 'left-item';
         return (
           <div onClick = {() => this.itemClick(index)} key = {index} className = {cls}>
             <div className = 'item-text'>{item.icon ? <img className = 'item-icon' src = {item.icon} alt = '' /> : null }{item.name}</div>

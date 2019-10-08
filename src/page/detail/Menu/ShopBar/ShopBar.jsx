@@ -1,10 +1,26 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { showChoose } from '../../actions/menuAction'
+import { showChoose, addSelectItem, menusSelectItem, clearCar } from '../../actions/menuAction'
 
 import './ShopBar.scss'
 
 class ShopBar extends Component {
+
+
+  addSelectItem(item) {
+    this.props.dispatch(addSelectItem({
+      index: item._index,
+      outIndex: item._outIndex,
+    }))
+  }
+
+  minusSelectItem(item) {
+    this.props.dispatch(menusSelectItem({
+      index: item._index,
+      outIndex: item._outIndex,
+    }))
+  }
+
   getTotalPrice() {
     let listData = this.props.listData.food_spu_tags || [] 
     let totalPrice = 0
@@ -16,6 +32,8 @@ class ShopBar extends Component {
       for( let j = 0; j < spus.length; j++) {
         let chooseCount = spus[j].chooseCount 
         if(chooseCount > 0) {
+          spus[j]._index = j 
+          spus[j]._outIndex = i
           chooseList.push(spus[j])
           dotNum += chooseCount
           totalPrice += spus[j].min_price * chooseCount
@@ -38,9 +56,9 @@ class ShopBar extends Component {
           <div className='item-name'>{item.name}</div>
           <div className='item-price'>￥{item.min_price * item.chooseCount}</div>
           <div className='select-content'>
-            <div onClick = {() => this.menusSelectItem()} className = 'minus'></div>
+            <div onClick = {() => this.minusSelectItem(item)} className = 'minus'></div>
             <div className = 'count'>{item.chooseCount}</div>
-            <div onClick = {() => this.addSelectItem()} className = 'plus'></div>
+            <div onClick = {() => this.addSelectItem(item)} className = 'plus'></div>
           </div>
         </div>
       )
@@ -54,6 +72,13 @@ class ShopBar extends Component {
     }))
   }
 
+  clearCar() {
+    this.props.dispatch(clearCar())
+    this.props.dispatch(showChoose({
+      flag: false
+    }))
+  }
+
   render() {
     const shipping_fee = this.props.listData.poi_info ? this.props.listData.poi_info.shipping_fee : 0 
     const data = this.getTotalPrice()
@@ -62,7 +87,7 @@ class ShopBar extends Component {
       {this.props.showChooseContent ? 
       <div className='choose-content'>
         <div className='content-top'>
-          <div className='clear-car'>清空购物车</div>
+          <div onClick = {() => this.clearCar()} className='clear-car'>清空购物车</div>
         </div>
         {this.renderChooseItem(data)}
       </div>  : null 

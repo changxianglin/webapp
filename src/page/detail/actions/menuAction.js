@@ -1,4 +1,7 @@
-import { GET_LIST_DATA, LEFT_CLICK, ADD_SELECT_ITEM, MENUS_SELECT_ITEM, SHOW_CHOOSE_CONTENT } from './actionTypes'
+import { 
+  GET_LIST_DATA, LEFT_CLICK, 
+  ADD_SELECT_ITEM, MENUS_SELECT_ITEM, 
+  SHOW_CHOOSE_CONTENT, CLEAR_CAR } from './actionTypes'
 import axios from 'axios'
 
 export const itemClick = (obj) => {
@@ -37,6 +40,13 @@ export const menusSelectItem = (obj) => {
 export const showChoose = (obj) => {
   return {
     type: SHOW_CHOOSE_CONTENT,
+    obj: obj
+  }
+}
+
+export const clearCar = (obj) => {
+  return {
+    type: CLEAR_CAR,
     obj: obj
   }
 }

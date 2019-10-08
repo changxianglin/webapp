@@ -1,4 +1,7 @@
-import { GET_LIST_DATA, LEFT_CLICK, ADD_SELECT_ITEM, MENUS_SELECT_ITEM, SHOW_CHOOSE_CONTENT } from '../actions/actionTypes'
+import { 
+  GET_LIST_DATA, LEFT_CLICK, 
+  ADD_SELECT_ITEM, MENUS_SELECT_ITEM, 
+  SHOW_CHOOSE_CONTENT, CLEAR_CAR } from '../actions/actionTypes'
 
 const initState = {
   listData: {},
@@ -29,7 +32,8 @@ const chooseContent = (state, action) => {
 const dealWithSelectItem = (state, action, type) => {
   const listData = state.listData
   const list = listData.food_spu_tags || []
-  const currentItem = list[state.currentLeftIndex]
+  const currentItem = list[action.outIndex || state.currentLeftIndex]
+
   if(type === ADD_SELECT_ITEM) {
     currentItem.spus[action.obj.index].chooseCount ++ 
   } else {
@@ -39,6 +43,20 @@ const dealWithSelectItem = (state, action, type) => {
 
   let _listData = JSON.parse(JSON.stringify(listData))
   return _listData
+}
+
+const clearCar = (state) => {
+  const listData = state.listData
+  const list = listData.food_spu_tags || []
+
+  for( let i = 0; i < list.length; i++) {
+    let spus = list[i].spus || []
+    for( let j = 0; j < spus.length; j++) {
+      spus[j].chooseCount = 0
+    }
+  }
+
+  return {...state, listData: JSON.parse(JSON.stringify(listData))}
 }
 
 const menuReducer = (state = initState, action) => {
@@ -53,6 +71,8 @@ const menuReducer = (state = initState, action) => {
       return minusSelectItem(state, action)
     case SHOW_CHOOSE_CONTENT:
       return chooseContent(state, action)
+    case CLEAR_CAR:
+      return clearCar(state, action)
     default: 
       return state
   }
