@@ -35,7 +35,10 @@ class Menu extends Component {
     let _array = array || []
 
     return _array.map((item, index) => {
-      return (<MenuItem key = {index} data = {item}></MenuItem>)
+      if(!item.chooseCount) {
+        item.chooseCount = 0
+      }
+      return (<MenuItem key = {index} data = {item} _index = {index}></MenuItem>)
     })
   }
 

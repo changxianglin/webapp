@@ -47,4 +47,20 @@
     background-size: cover;
     background-image: url('./img/plus.png');
   }
+  .minus {
+    width: px2rem(25px);
+    height: px2rem(26px);
+    background-size: cover;
+    background-image: url('./img/minus.png');
+  }
+  .count {
+    font-size: px2rem(15px);
+    color: #2f2f2f;
+    width: px2rem(20px);
+    height: px2rem(25px);
+    line-height: px2rem(25px);
+    margin-left: px2rem(2px);
+    margin-right: px2rem(2px);
+    text-align: center;
+  }
 }
