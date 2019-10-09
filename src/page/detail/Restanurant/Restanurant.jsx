@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 
 import { getRestanurantData } from '../actions/restanurantActions'
 
+import "./Restanurant.scss"
+
 class Restanurant extends Component {
   constructor(props) {
     super(props)
@@ -13,7 +15,7 @@ class Restanurant extends Component {
     let array = types || []
 
     return array.map((item, index) => {
-      return <p key = {index} className = 'restanurant-pay-type'><img src = {item.icon_url} />{item.icon_info}</p>
+      return <p key = {index} className = 'restanurant-pay-type res-section'><img className = 'icon' src = {item.icon_url} />{item.info}</p>
     })
   }
 
@@ -22,17 +24,17 @@ class Restanurant extends Component {
     return (
       <div className = 'restanurant-content'>
         <div className = 'restanurant-basic'>
-          <p className = 'restanurant-tel'>{data.call_center}</p>
-          <p className = 'restanurant-addr'>
-            <div className = 'addr-arao'>
+          <p className = 'restanurant-tel res-section'>{data.call_center}</p>
+          <p className = 'restanurant-addr res-section'>
+            <div className = 'addr-wrap'>
               <div className = 'addr-name'>商家地址：</div>
               <p className = 'add-text'>{data.address}</p>
             </div>
           </p>
         </div>
         <div className = 'restanurant-basic'>
-          <p className = 'restanurant-send-time'>配送时间: {data.shipping_time}</p>
-          <p className = 'restanurant-send-type'>配送服务: {data.delivery_type === 1 ? <span><span className = 'meituan-send'>美团专送</span>提供高质量配送服务</span> : '商家配送'}</p>
+          <p className = 'restanurant-send-time res-section'>配送时间: {data.shipping_time}</p>
+          <p className = 'restanurant-send-type res-section'>配送服务: {data.delivery_type === 1 ? <span><span className = 'meituan-send'>美团专送</span>提供高质量配送服务</span> : '商家配送'}</p>
         </div>
         <div className = 'restanurant-basic'>
             {this.renderPayType(data.discounts2)}
