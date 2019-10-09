@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import CommentItem from './CommentItem/CommentItem'
 
 class CommentList extends Component {
   renderList() {
     const list = this.props.commentList
 
     return list.map((item, index) => {
-      return (<div key = {index}>{item.comment}</div>)
+      return (<CommentItem key = {index} data = {item}></CommentItem>)
     })
   }
 
