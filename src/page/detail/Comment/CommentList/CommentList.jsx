@@ -1,6 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import CommentItem from './CommentItem/CommentItem'
+import ScrollView from 'component/ScrollView/ScrollView'
+
+import { getListData } from '../../actions/commentAction'
+
+import './CommentList.scss'
 
 class CommentList extends Component {
   renderList() {
@@ -11,10 +16,16 @@ class CommentList extends Component {
     })
   }
 
+  onLoadPage() {
+    this.props.dispatch(getListData())
+  }
+
   render() {
     return (
       <div className = 'comment-list'>
+        <ScrollView loadCallback = {this.onLoadPage.bind(this)} isend = {0}>
         {this.renderList()}
+        </ScrollView>
       </div>
     )
   }

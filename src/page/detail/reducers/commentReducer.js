@@ -6,8 +6,13 @@ const initState = {
 }
 
 const getListData =  (state, action) => {
-
-  return {...state, commentData: action.obj.data, commentList: action.obj.data.comments}
+  let list = []
+  if(state.commentList.length > 0) {
+    list = state.commentList.concat(action.obj.data.comments)
+  } else {
+    list = action.obj.data.comments
+  }
+  return {...state, commentData: action.obj.data, commentList: list}
 }
 
 const commentReducer = (state = initState, action) => {

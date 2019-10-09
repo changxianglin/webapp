@@ -26,7 +26,7 @@ class CommentItem extends Component {
   }
 
   renderTags(lable) {
-    return lable.map((item, index) => {
+    return lable.map((item) => {
       return item.content + ','
     })
   }
@@ -42,7 +42,7 @@ class CommentItem extends Component {
     return (
       <div className = 'comment-item'>
           <div className = 'comment-time'>{this.formatTime(item.comment_time)}</div>
-          <img className = 'avatar' src = {item.user_pic_url} />
+          <img className = 'avatar' src = {item.user_pic_url || '//upload.jianshu.io/users/upload_avatars/942697/24264bb1eb61.gif?imageMogr2/auto-orient/strip|imageView2/1/w/90/h/90/format/webp'} />
           <div className = 'item-right'>
             <p className = 'nickname'>{item.user_name}</p>
             <div className = 'star-and-time'>
