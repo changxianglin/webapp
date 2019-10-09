@@ -14,6 +14,9 @@ const itemClick = (state, action) => {
 }
 
 const getListData = (state, action) => {
+  if(Object.keys(state.listData).length > 0) {
+    return {...state}
+  }
   return {...state, listData: action.obj.data}
 }
 
