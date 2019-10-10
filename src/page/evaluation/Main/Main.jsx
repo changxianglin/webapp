@@ -1,6 +1,7 @@
 import React from 'react'
 
 import './Main.scss'
+import 'component/common.scss'
 
 import NavHeader from 'component/NavHeader/NavHeader.jsx'
 

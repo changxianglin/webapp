@@ -5,6 +5,8 @@ import NavHeader from 'component/NavHeader/NavHeader'
 import Header from '../Header/Header'
 import ContentList from '../ContenList/ContentList'
 
+import 'component/common.scss'
+
 class Main extends Component {
   constructor(props) {
     super(props)

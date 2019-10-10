@@ -9,6 +9,8 @@ import Home from '../Home/Home'
 // import My from '../My/My'
 import Loading from './Loading'
 
+import 'component/common.scss'
+
 const My = Loadable({
   loader: () => import(/* webpackChunkName: 'my' */'../My/My'),
   loading: Loading,

@@ -7,6 +7,7 @@ import Restanurant from '../Restanurant/Restanurant'
 import Comment from '../Comment/Comment'
 
 import './Main.scss'
+import 'component/common.scss'
 
 class Main extends Component {
   constructor(props) {
@@ -23,7 +24,14 @@ class Main extends Component {
 
     return tabs.map((item) => {
       return (
-        <NavLink replace = {true} to = {'/' + item.key} key = {item.key} className='active' onClick = {() => this.changeTab} className = 'tab-item '>{item.name}</NavLink>
+        <NavLink 
+        replace = {true} 
+        to = {'/' + item.key} 
+        key = {item.key}
+        onClick = {() => this.changeTab} 
+        className = 'tab-item '>
+          {item.name}
+        </NavLink>
       )
     })
   }

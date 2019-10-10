@@ -21,6 +21,9 @@ class ScrollView extends Component {
       if((scrollTop + clientHeight) >= (scrollHeight - proLoadDis)) {
 
         if(!this.props.isend) {
+          if(!this.props.readyToLoad) {
+            return 
+          }
           this.props.loadCallback && this.props.loadCallback()
         }
         

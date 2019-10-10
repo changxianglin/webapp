@@ -1,7 +1,7 @@
 const webpack = require('webpack')
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+// const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const fs = require('fs')
 const srcRoot = path.resolve(__dirname, 'src')
 const devPath = path.resolve(__dirname, 'dev')
@@ -47,7 +47,7 @@ module.exports = {
   mode: 'development',
   devServer: {
     contentBase: devPath,
-    // hot: true
+    hot: true
   },
   entry: entryMap,
   resolve: {
@@ -63,8 +63,8 @@ module.exports = {
   module: {
     rules: [
       { test: /\.(js|jsx)$/, use: [{loader: 'babel-loader'}, {loader: 'eslint-loader'}], include: srcRoot},
-      { test: /\.css$/, use: [MiniCssExtractPlugin.loader, 'css-loader'], include: srcRoot},
-      { test: /\.scss$/, use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader', {
+      { test: /\.css$/, use: ['style-loader', 'css-loader'], include: srcRoot},
+      { test: /\.scss$/, use: ['style-loader', 'css-loader', 'sass-loader', {
         loader: 'sass-resources-loader',
         options: {
           resources: srcRoot + '/component/common.scss'
@@ -85,11 +85,11 @@ module.exports = {
     }
   },
   plugins: [
-    // new webpack.NamedModulesPlugin(),
-    // new webpack.HotModuleReplacementPlugin(),
-    new MiniCssExtractPlugin({
-      filename: '[name].css',
-      chunkFilename: '[id].css'
-    })
+    new webpack.NamedModulesPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
+    // new MiniCssExtractPlugin({
+    //   filename: '[name].css',
+    //   chunkFilename: '[id].css'
+    // })
   ].concat(htmlArray)
 }

@@ -12,10 +12,6 @@ const scrollViewReducer = (state = initState, action) => {
   switch(action.type) {
     case CHANGEREADYSTATE:
       return changeState(state, action)
-      return {
-        ...state,
-
-      }
     default:
       return state
   }
