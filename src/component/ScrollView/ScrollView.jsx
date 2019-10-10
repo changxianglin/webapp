@@ -1,9 +1,15 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import Loading from 'component/Loading/Loading.jsx'
 
 import './ScrollView.scss'
 
-export default class ScrollView extends Component {
+class ScrollView extends Component {
+    constructor(props) {
+      super(props)
+
+      this._onLoadPage = this.onLoadPage.bind(this)
+    }
 
     onLoadPage() {
       let clientHeight = document.documentElement.clientHeight
@@ -22,11 +28,11 @@ export default class ScrollView extends Component {
   }
 
   UNSAFE_componentWillMount() {
-    window.addEventListener('scroll', this.onLoadPage.bind(this))
+    window.addEventListener('scroll', this._onLoadPage)
   }
 
   componentWillUnmount() {
-    window.removeEventListener('scroll', this.onLoadPage.bind(this))
+    window.removeEventListener('scroll', this._onLoadPage)
   }
 
   render() {
@@ -38,3 +44,9 @@ export default class ScrollView extends Component {
     )
   }
 }
+
+export default connect(
+  state => ({
+    readyToLoad: state.scrollViewReducer.readyToLoad
+  })
+)(ScrollView)

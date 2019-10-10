@@ -45,6 +45,16 @@ app.get('/api', (req, res, next) => {
   })
 })
 
+app.post('/proxy', (req, res, next) => {
+  res.json({
+    code: 0,
+    msg: '成功',
+    data: {
+      info: 'test success'
+    }
+  })
+})
+
 app.listen(port, () => {
   console.log(`app running port in ${port}`)
 })
